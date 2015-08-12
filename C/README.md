@@ -1,4 +1,4 @@
-Useful C reference snippets 
+Useful C Reference Snippets 
 ===========================
 
 echo.c: process command line arguments  
@@ -12,3 +12,14 @@ sorting algorithms
 ------------------
 shellsort.c  
 qsort.c  
+bubblesort.c
+
+Abstract Data Types
+-------------------
+vector.[ch] - dynamic string array
+
+misc.c
+------
+* int nunits(int b, int n);
+Calculate number of 'block' sized units required to hold n 'pieces'
+
