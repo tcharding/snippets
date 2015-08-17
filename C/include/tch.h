@@ -51,6 +51,9 @@ struct mems {
 int m_open_memstream(struct mems *m);
 int m_insert(struct mems *m, char *fmt, ...);
 
+/* Define bzero() as macro. Stevens, Fenner, Rudoff [2004] */
+#define bzero(ptr, n) memset(ptr, 0, (size_t)(n))
+
 /*
  * Prototypes for library routines. Stevens and Rago [2013]
  */

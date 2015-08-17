@@ -1,4 +1,4 @@
-SUBDIRS = adt
+SUBDIRS = adt misc
 
 # all: $(LIB)
 # 	for i in $(SUBDIRS); do \
