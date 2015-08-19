@@ -1,13 +1,15 @@
 #ifndef _STACK_H
 #define _STACK_H
-#include "data_t.h"
 
-/* 
- * Stack of data_t objects
- */
+struct stack {
+	int size;		/* size of memory allocated */
+	int sp;			/* next position to fill */
+	char **v;		/* data */
+};
 
-
-int st_push(const data_t *);
-data_t *st_pop(void);
+struct stack *st_creat();
+void st_free(struct stack *);
+int st_push(struct stack *, const char *);
+char *st_pop(struct stack *);
 
 #endif	/* _STACK_H */
