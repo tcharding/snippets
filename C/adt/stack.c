@@ -1,6 +1,7 @@
-#include "usp.h"
+#include "tch.h"
 #include "stack.h"
-#include <stdlib.h>
+#include "string.h"
+#include <errno.h>
 #define INIT 1
 
 /* 
@@ -38,7 +39,6 @@ void st_free(struct stack *st)
 /* st_push: push s to top of stack, return new stack size */
 int st_push(struct stack *st, const char *s)
 {
-	struct ms m;
 	int size;
 	
 	if (st == NULL || s == NULL)
@@ -57,13 +57,7 @@ int st_push(struct stack *st, const char *s)
 		st->size = size;
 		st->v = tmp;
 	}
-
-	if (ms_open(&m) == -1) 
-		err_sys("m_open_mstream failed");
-	if (fputs(s, m.stream) == EOF)
-		err_sys("fputs failed: %s", s);
-	fclose(m.stream);
-	st->v[st->sp++] = m.buf;
+	st->v[st->sp++] = dups(s);
 	return st->sp;
 }
 
