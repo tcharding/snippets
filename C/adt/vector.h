@@ -1,22 +1,20 @@
-#ifndef TCH_VECTOR_H
-#define TCH_VECTOR_H
-#include "data.h"
+y#ifndef _VECTOR_H
+#define _VECTOR_H
+
 /* 
- * Dynamic Vector Library
+ * Vector of data_t objects (non-orthogonal)
  */
 
-typedef struct {
-	int slots;
+typedef struct vec {
+	int size;
 	int cnt;
-	data_t **data;		/* NULL terminated */
-} VECTOR;
+	data_t **v;
+} vec_t;
 
-typedef void Freefunc(data_t *); /* free data_t */
-typedef int Func(data_t *);	 /* generic function for data_t */
+vec_t *v_creat(void);
+void v_free(vec_t *vt);
+int v_adds(vec_t *vt, const char *s);
+int v_foreach(vec_t *vt, int (*fnc)(char *));
+char **v_dup(vec_t *vt);
 
-VECTOR *v_creat();
-void v_free(VECTOR *v, Freefunc *fn);
-int v_add(VECTOR *v, data_t *d);
-int v_foreach(VECTOR *vp, Func *fn);
-
-#endif	/* TCH_VECTOR_H */
+#endif	/* _VECTOR_H */
